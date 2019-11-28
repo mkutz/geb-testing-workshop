@@ -1,0 +1,47 @@
+plugins {
+    id 'groovy'
+    id 'idea'
+    id 'com.github.erdi.idea-base' version '2.2'
+    id 'com.github.erdi.webdriver-binaries' version '2.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.codehaus.groovy:groovy-all:2.5.9'
+    testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
+    testImplementation 'org.gebish:geb-spock:3.3'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+    testImplementation 'org.seleniumhq.selenium:selenium-support:3.141.59'
+    testImplementation 'org.testcontainers:selenium:1.12.3'
+    testImplementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    testImplementation 'com.squareup.retrofit2:converter-jackson:2.7.1'
+    testImplementation 'com.fasterxml.jackson.module:jackson-module-paranamer:2.9.10'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.10'
+    compileOnly 'org.slf4j:slf4j-api:1.7.28'
+}
+
+webdriverBinaries {
+    chromedriver {
+        version = '79.0.3945.36'
+        fallbackTo32Bit = true
+    }
+}
+
+test {
+    outputs.upToDateWhen { false }
+}
+
+task testInDocker(type: Test) {
+    systemProperty "geb.env", "testcontainers"
+}
+
+task testHeadless(type: Test) {
+    systemProperty "geb.env", "headless"
+}
+
+description = 'Geb Testing Workshop'
+sourceCompatibility = '11'

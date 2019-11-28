@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - solutions
+
+jobs:
+  test:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11.x
+      - name: start containers
+        run: docker-compose up -d
+      - name: build
+        run: ./gradlew testHeadless testInDocker
+      - name: Archive reports
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: reports
+          path: build/reports/
