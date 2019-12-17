@@ -18,5 +18,9 @@ dependencies {
     compileOnly 'org.slf4j:slf4j-api:1.7.28'
 }
 
+test {
+    outputs.upToDateWhen { false }
+}
+
 description = 'Geb Testing Workshop'
 sourceCompatibility = '11'
