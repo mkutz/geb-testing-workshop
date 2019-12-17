@@ -71,7 +71,7 @@ Next we would want to interact with these pages, which would lead to a lot of du
 
 [GebConfig.groovy]: <src/test/resources/GebConfig.groovy>
 [BasicSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/BasicSpec.groovy>
-[RegisterSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegistrationSpec.groovy>
+[RegistrationSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegistrationSpec.groovy>
 [HomePage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/HomePage.groovy>
 [RegisterPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterPage.groovy>
 [LoginPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/LoginPage.groovy>
