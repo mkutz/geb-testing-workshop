@@ -13,5 +13,6 @@ class RegisterPage extends Page {
         emailInput { $("input", placeholder: "Email") }
         passwordInput { $("input", placeholder: "Password") }
         submitButton { $("button", type: "submit").click() }
+        errorMessages(wait: true) { $("ul.error-messages li") }
     }
 }

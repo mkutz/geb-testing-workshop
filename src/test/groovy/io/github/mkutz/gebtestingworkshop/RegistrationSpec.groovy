@@ -11,7 +11,6 @@ class RegistrationSpec extends GebSpec {
     String someEmail = "${randomUUID()}@michael-kutz.de".toString()
     static final String somePassword = "test1234"
 
-    @PendingFeature
     def "registration works"() {
         given:
         RegisterPage page = to RegisterPage
@@ -37,6 +36,6 @@ class RegistrationSpec extends GebSpec {
         page.submitButton.click()
 
         then:
-        at RegisterPage
+        page.errorMessages.text() ==~ /^username can't be blank.*/
     }
 }

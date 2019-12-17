@@ -40,15 +40,21 @@ Next we would want to interact with these pages, which would lead to a lot of du
       Refactor your features to use `to` instead of `go` and `at` instead of `$`.
 - [ ] Now open [RegistrationSpec] and implement the first feature.
       Define each element as `content` of the [RegisterPage].
-      We should stay on the [RegisterPage].
+      Consider the test to be successful, when you end on the [HomePage].
+      We'll improve that later.
 - [ ] Implement the second feature.
-      Consider yourself logged in, when there is a link displayed with `href` "#editor".
+      Check for an error message and verify it starts with "username can't be blank".
       This won't work, add a `@PendingFeature` annotation.
 
 ## Waiting
 
-- different definitions in content `wait: true`, `wait: 5`, `wait: "long"`
-- using `waitFor` in methods
+The reason for the last test to fail is the fact that the error messages are added to the page dynamically.
+Selenium needs to _wait_ for them to appear.
+
+- [ ] Mark the error messages content element of [RegisterPage], so Geb will automatically wait for it.
+      Run the second [RegistrationSpec] feature again and remove the `@PendingFeature`.
+- [ ] Let's also improve the first feature in [RegistrationSpec].
+      It should only succeed if there is the "New Post" link is displayed.
 
 ## Modules
 
