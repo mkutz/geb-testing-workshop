@@ -55,10 +55,11 @@ Selenium needs to _wait_ for them to appear.
       Run the second [RegistrationSpec] feature again and remove the `@PendingFeature`.
 - [ ] Let's also improve the first feature in [RegistrationSpec].
       It should only succeed if there is the "New Post" link is displayed.
+- [ ] Let's add another [BasicSpec] feature to check there are exactly 10 articles displayed on the [HomePage].
+      Note that you can also use `waitFor` in assertions.
 
 ## Modules
 
-- build-in `geb.Module`s
 - move repeating content to `geb.Module`s
 - move complex content to `geb.Module`s
 

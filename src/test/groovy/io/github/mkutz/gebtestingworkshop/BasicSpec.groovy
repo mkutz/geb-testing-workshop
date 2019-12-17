@@ -6,25 +6,33 @@ class BasicSpec extends GebSpec {
 
     def "main page is accessible"() {
         when:
-        go "/"
+        to HomePage
 
         then:
-        $(".feed-toggle")
+        at HomePage
     }
 
     def "register page is accessible"() {
         when:
-        go "/#/register"
+        to RegisterPage
 
         then:
-        $("h1").text() == "Sign Up"
+        at RegisterPage
     }
 
     def "login page is accessible"() {
         when:
-        go "/#/login"
+        to LoginPage
 
         then:
-        $("h1").text() == "Sign In"
+        at LoginPage
+    }
+
+    def "there are 10 posts displayed"() {
+        given:
+        HomePage page = to HomePage
+
+        expect:
+        waitFor { page.articlePreviews.size() == 10 }
     }
 }
