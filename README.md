@@ -19,16 +19,31 @@ We will make use of the [Spock framework](http://spockframework.org) for the tes
 
 ## Basics
 
-- `go` to an URL
-- Different selectors `$`
-- `click()`
-- `text()`
+We are going to specify a [RealWorld example](https://github.com/gothinkster/realworld).
+
+- [ ] Open [BasicSpec] and implement the first feature.
+      First use the `go` method to navigate https://react-redux.realworld.io/.
+      Then use the `$` the verify there is a `div` with class `feed-toggle`.
+- [ ] In the second feature, check if the only `h1` on the page has the `text` "Sign Up".
+- [ ] In the third feature the `h1`'s `text` should be "Sign In".
+- [ ] Since we don't want to re-type that URL all the time, let's define it as `baseUrl` for the suite.
+      Open [GebConfig.groovy] and change the baseUrl.
+      Update the features to use relative URLs and rely on the `baseUrl`.
 
 ## Page Objects
 
-- go `to` a page & verify we are `at` a `geb.Page`
-- defining a page's `content`
-- adding methods
+So now we already visited three different pages and implemented checks to verify we are at these pages.
+Next we would want to interact with these pages, which would lead to a lot of duplicate code.
+
+- [ ] Create the page objects [HomePage], [RegisterPage] and [LoginPage].
+      Set the page `url`s and specify an `at` check on each of them.
+      Refactor your features to use `to` instead of `go` and `at` instead of `$`.
+- [ ] Now open [RegistrationSpec] and implement the first feature.
+      Define each element as `content` of the [RegisterPage].
+      We should stay on the [RegisterPage].
+- [ ] Implement the second feature.
+      Consider yourself logged in, when there is a link displayed with `href` "#editor".
+      This won't work, add a `@PendingFeature` annotation.
 
 ## Waiting
 
@@ -52,3 +67,11 @@ We will make use of the [Spock framework](http://spockframework.org) for the tes
 
 - avoid the `StaleElementException`
 - combination with Testcontainers
+
+
+[GebConfig.groovy]: <src/test/resources/GebConfig.groovy>
+[BasicSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/BasicSpec.groovy>
+[RegisterSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegistrationSpec.groovy>
+[HomePage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/HomePage.groovy>
+[RegisterPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterPage.groovy>
+[LoginPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/LoginPage.groovy>
