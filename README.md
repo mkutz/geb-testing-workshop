@@ -15,6 +15,8 @@ We will make use of the [Spock framework](http://spockframework.org) for the tes
 
 ## Setup
 
+- How does this project work (see [GebConfig.groovy](src/test/resources/GebConfig.groovy), [build.gradle](build.gradle))
+
 ## Basics
 
 - `go` to an URL
