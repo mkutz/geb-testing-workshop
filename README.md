@@ -56,8 +56,20 @@ When using such a page as a human, you might not even notice, but Geb will try t
 
 ## Modules
 
-- move repeating content to `geb.Module`s
-- move complex content to `geb.Module`s
+Sometimes web applications' pages consist of several interesting components.
+E.g. the page's header or navigation or a form with multiple inputs.
+We refer to these components in natural language.
+E.g. "Fill the registration form."
+Geb's modules are a way to achieve that.
+
+- [ ] Revisit the [RegisterPage] and move the content elements to a new [RegisterFormModule].
+      Add a `register` method, which takes username, password and email address as parameters.
+      It should add the values to the inputs and submit the form.
+
+Modules are not only great for complex content, but also for repeating content.
+
+- [ ] Now let's implement the first feature of the [FeedSpec].
+      Create a [ArticlePreviewModule] with a method returning a LocalDate.
 
 ## Configuration
 
@@ -78,4 +90,6 @@ When using such a page as a human, you might not even notice, but Geb will try t
 [HomePage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/HomePage.groovy>
 [RegisterPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterPage.groovy>
 [LoginPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/LoginPage.groovy>
+[FeedSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/FeedSpec.groovy>
+[RegisterFormModule]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterFormModule.groovy>
 [FeedSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/FeedSpec.groovy>
