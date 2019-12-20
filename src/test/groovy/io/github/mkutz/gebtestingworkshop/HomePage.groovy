@@ -6,7 +6,7 @@ class HomePage extends Page {
 
     static url = "/"
 
-    static at = { $(".feed-toggle") }
+    static at = { waitFor { $(".home-page") } }
 
     static content = {
         articlePreviews(wait: true) { $(".article-preview") }

@@ -4,7 +4,7 @@ import geb.spock.GebSpec
 
 class BasicSpec extends GebSpec {
 
-    def "main page is accessible"() {
+    def "home page is accessible"() {
         when:
         to HomePage
 

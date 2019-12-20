@@ -23,7 +23,7 @@ We are going to specify a [RealWorld example](https://github.com/gothinkster/rea
 
 - [ ] Open [BasicSpec] and implement the first feature.
       First use the `go` method to navigate https://react-redux.realworld.io/.
-      Then use the `$` the verify there is a `div` with class `feed-toggle`.
+      Then use the `$` the verify there is a `div` with class `home-page`.
 - [ ] In the second feature, check if the only `h1` on the page has the `text` "Sign Up".
 - [ ] In the third feature the `h1`'s `text` should be "Sign In".
 - [ ] Since we don't want to re-type that URL all the time, let's define it as `baseUrl` for the suite.
@@ -37,26 +37,22 @@ Next we would want to interact with these pages, which would lead to a lot of du
 
 - [ ] Create the page objects [HomePage], [RegisterPage] and [LoginPage].
       Set the page `url`s and specify an `at` check on each of them.
-      Refactor your features to use `to` instead of `go` and `at` instead of `$`.
-- [ ] Now open [RegistrationSpec] and implement the first feature.
-      Define each element as `content` of the [RegisterPage].
-      Consider the test to be successful, when you end on the [HomePage].
-      We'll improve that later.
-- [ ] Implement the second feature.
-      Check for an error message and verify it starts with "username can't be blank".
-      This won't work, add a `@PendingFeature` annotation.
+      Refactor your features to use `to` instead of `go` and just expect this to work.
+      Geb's `to` automatically verifies the success of the navigation by calling `at` and returns the page object.
 
 ## Waiting
 
-The reason for the last test to fail is the fact that the error messages are added to the page dynamically.
-Selenium needs to _wait_ for them to appear.
+Especially on single page applications, some content is loaded dynamically.
+This means that they will show up eventually, but we cannot tell when.
+When using such a page as a human, you might not even notice, but Geb will try to find the element _immediately_ and will fail if it is not there, yet.
 
-- [ ] Mark the error messages content element of [RegisterPage], so Geb will automatically wait for it.
-      Run the second [RegistrationSpec] feature again and remove the `@PendingFeature`.
-- [ ] Let's also improve the first feature in [RegistrationSpec].
-      It should only succeed if there is the "New Post" link is displayed.
-- [ ] Let's add another [BasicSpec] feature to check there are exactly 10 articles displayed on the [HomePage].
-      Note that you can also use `waitFor` in assertions.
+- [ ] Now open [RegistrationSpec] and implement the first feature.
+      Check for an error message and verify it starts with "username can't be blank".
+      Since the error message is loaded dynamically, you will need to wait for it in some way.
+- [ ] Implement the second feature if [RegistrationSpec].
+      Define each element as `content` of the [RegisterPage].
+      Consider the test to be successful, when you end on the [HomePage].
+      Again, you will need to use some kind of waiting.
 
 ## Modules
 
@@ -82,3 +78,4 @@ Selenium needs to _wait_ for them to appear.
 [HomePage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/HomePage.groovy>
 [RegisterPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterPage.groovy>
 [LoginPage]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/LoginPage.groovy>
+[FeedSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/FeedSpec.groovy>
