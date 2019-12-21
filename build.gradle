@@ -29,5 +29,9 @@ test {
     outputs.upToDateWhen { false }
 }
 
+task testInDocker(type: Test) {
+    systemProperty "geb.env", "testcontainers"
+}
+
 description = 'Geb Testing Workshop'
 sourceCompatibility = '11'
