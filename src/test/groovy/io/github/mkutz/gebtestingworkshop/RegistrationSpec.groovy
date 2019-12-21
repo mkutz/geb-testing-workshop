@@ -15,10 +15,7 @@ class RegistrationSpec extends GebSpec {
         RegisterPage page = to RegisterPage
 
         when:
-        page.usernameInput = ""
-        page.emailInput = someEmail
-        page.passwordInput = somePassword
-        page.submitButton.click()
+        page.registerForm.register("", someEmail, somePassword)
 
         then:
         page.errorMessages.text().contains("username can't be blank")
@@ -29,10 +26,7 @@ class RegistrationSpec extends GebSpec {
         RegisterPage page = to RegisterPage
 
         when:
-        page.usernameInput = someUsername
-        page.emailInput = someEmail
-        page.passwordInput = somePassword
-        page.submitButton.click()
+        page.registerForm.register(someUsername, someEmail, somePassword)
 
         then:
         at HomePage

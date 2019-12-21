@@ -9,6 +9,6 @@ class HomePage extends Page {
     static at = { waitFor { $(".home-page") } }
 
     static content = {
-        articlePreviews(wait: true) { $(".article-preview") }
+        articlePreviews(wait: true) { $(".article-preview").moduleList(ArticlePreviewModule) }
     }
 }

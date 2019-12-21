@@ -68,7 +68,8 @@ Geb's modules are a way to achieve that.
 
 Modules are not only great for complex content, but also for repeating content.
 
-- [ ] Now let's implement the first feature of the [FeedSpec].
+- [ ] Now let's implement the second feature of the [FeedSpec].
+      Note that the first feature uses an extra `waitFor` to make sure all articles are loaded.
       Create a [ArticlePreviewModule] with a method returning a LocalDate.
 
 ## Configuration
@@ -93,3 +94,4 @@ Modules are not only great for complex content, but also for repeating content.
 [FeedSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/FeedSpec.groovy>
 [RegisterFormModule]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/RegisterFormModule.groovy>
 [FeedSpec]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/FeedSpec.groovy>
+[ArticlePreviewModule]: <src/test/groovy/io/github/mkutz/gebtestingworkshop/ArticlePreviewModule.groovy>

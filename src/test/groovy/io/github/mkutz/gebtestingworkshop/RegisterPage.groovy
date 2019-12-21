@@ -9,10 +9,7 @@ class RegisterPage extends Page {
     static at = { $("h1").text() == "Sign Up" }
 
     static content = {
-        usernameInput { $("input", placeholder: "Username") }
-        emailInput { $("input", placeholder: "Email") }
-        passwordInput { $("input", placeholder: "Password") }
-        submitButton { $("button", type: "submit") }
+        registerForm { $("form").module(RegisterFormModule) }
         errorMessages(wait: true) { $("ul.error-messages li") }
     }
 }
