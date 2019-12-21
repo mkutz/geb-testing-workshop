@@ -1,0 +1,8 @@
+version: "3"
+services:
+  frontend:
+    image: gebish/react-mobx-realworld-example-app:v1
+    ports:
+      - "5000:5000"
+  api:
+    image: gebish/spring-boot-realworld-example-app:v1
