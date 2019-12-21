@@ -12,3 +12,4 @@ gradle-app.setting
 
 # Ignore Idea config files
 .idea
+geb-testing-workshop.i*
