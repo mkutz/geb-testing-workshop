@@ -4,16 +4,22 @@ In this workshop we'll introduce the participants to the [Geb framework](https:/
 
 We will make use of the [Spock framework](http://spockframework.org) for the tests but won't go into much detail on that.
 
+## Application under test
+
+In this workshop we will be using an instance of [RealWorld example app](https://github.com/gothinkster/realworld) which is dockerised based on [a `docker-compose.yaml` file](docker-compose.yml).
+We will be using the React + MobX version of the frontend which is [available on docker hub](https://hub.docker.com/repository/docker/gebish/react-mobx-realworld-example-app) based on [this clone repository](https://github.com/erdi/react-mobx-realworld-example-app).
+For the backend, we will be using the SpringBoot version which is also [available on docker hub](https://hub.docker.com/repository/docker/gebish/spring-boot-realworld-example-app) and it's based on [this clone repository](https://github.com/erdi/spring-boot-realworld-example-app).
+
 ## Setup
 
-- How does this project work (see [GebConfig.groovy](src/test/resources/GebConfig.groovy), [build.gradle](build.gradle))
+- To import the project into IntelliJ simply run `./gradlew openIdea` (or `gradlew.bat openIdea` if you're using Windows) in the root of the repository
+- To start up the application run `docker-compose up` - the application will be available on localhost at port 5000.
+- How does this project work (see [`GebConfig.groovy`](src/test/resources/GebConfig.groovy), [`build.gradle`](build.gradle))
 
 ## Basics
 
-We are going to specify a [RealWorld example](https://github.com/gothinkster/realworld).
-
 - [ ] Open [BasicSpec] and implement the first feature.
-      First use the `go` method to navigate https://react-redux.realworld.io/.
+      First use the `go` method to navigate http://localhost:5000/.
       Then use the `$` the verify there is a `div` with class `home-page`.
 - [ ] In the second feature, check if the only `h1` on the page has the `text` "Sign Up".
 - [ ] In the third feature the `h1`'s `text` should be "Sign In".
