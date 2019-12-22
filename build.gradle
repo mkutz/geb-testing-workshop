@@ -1,7 +1,7 @@
 plugins {
     id 'groovy'
     id 'idea'
-    id 'com.github.erdi.idea-base' version '2.1'
+    id 'com.github.erdi.idea-base' version '2.2'
     id 'com.github.erdi.webdriver-binaries' version '2.1'
 }
 
