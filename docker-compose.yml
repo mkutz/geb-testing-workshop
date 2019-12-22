@@ -1,4 +1,7 @@
-version: "3"
+version: "3.5"
+networks:
+  default:
+    name: "geb-testing-workshop"
 services:
   frontend:
     image: gebish/react-mobx-realworld-example-app:v1
