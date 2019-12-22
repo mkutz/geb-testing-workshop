@@ -4,15 +4,6 @@ In this workshop we'll introduce the participants to the [Geb framework](https:/
 
 We will make use of the [Spock framework](http://spockframework.org) for the tests but won't go into much detail on that.
 
-## TODO
-
-- [ ] Setup: Gradle, GebConfig.groovy @erdi
-- [X] CfP Greach @mkutz
-- [X] Application under test @mkutz/@erdi → https://react-redux.realworld.io/
-- [X] Setup repo @mkutz
-- [ ] Application under test startup/integration (separate Gradle project/module/task) @erdi
-- [ ] README.md with tasks, manual links @mkutz
-
 ## Setup
 
 - How does this project work (see [GebConfig.groovy](src/test/resources/GebConfig.groovy), [build.gradle](build.gradle))
