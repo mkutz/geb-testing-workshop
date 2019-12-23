@@ -27,12 +27,4 @@ class BasicSpec extends GebSpec {
         then:
         at LoginPage
     }
-
-    def "there are 10 posts displayed"() {
-        given:
-        HomePage page = to HomePage
-
-        expect:
-        waitFor { page.articlePreviews.size() == 10 }
-    }
 }
