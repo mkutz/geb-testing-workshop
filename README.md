@@ -13,13 +13,13 @@ For the backend, we will be using the SpringBoot version which is also [availabl
 ## Setup
 
 - To import the project into IntelliJ simply run `./gradlew openIdea` (or `gradlew.bat openIdea` if you're using Windows) in the root of the repository
-- To start up the application run `docker-compose up` - the application will be available on localhost at port 5000.
+- To start up the application run `docker-compose up` - the application will be available on localhost at port 3000.
 - How does this project work (see [`GebConfig.groovy`](src/test/resources/GebConfig.groovy), [`build.gradle`](build.gradle))
 
 ## Basics
 
 - [ ] Open [BasicSpec] and implement the first feature.
-      First use the `go` method to navigate http://localhost:5000/.
+      First use the `go` method to navigate http://localhost:3000/.
       Then use the `$` the verify there is a `div` with class `home-page`.
 - [ ] In the second feature, check if the only `h1` on the page has the `text` "Sign Up".
 - [ ] In the third feature the `h1`'s `text` should be "Sign In".
