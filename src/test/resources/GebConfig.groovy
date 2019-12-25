@@ -2,11 +2,11 @@ import org.openqa.selenium.chrome.ChromeOptions
 import org.testcontainers.containers.BrowserWebDriverContainer
 import org.testcontainers.containers.GenericContainer
 
-baseUrl = "http://localhost:5000/"
+baseUrl = "http://localhost:3000/"
 
 environments {
     testcontainers {
-        baseUrl = "http://frontend:5000/"
+        baseUrl = "http://frontend:3000/"
 
         driver = {
             def container = new BrowserWebDriverContainer<>()
