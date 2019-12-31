@@ -18,7 +18,7 @@ class RegistrationSpec extends GebSpec {
         page.registerForm.register("", someEmail, somePassword)
 
         then:
-        page.errorMessages.text().contains("username can't be blank")
+        page.errorMessages.text().contains("username can't be empty")
     }
 
     def "registration works"() {
