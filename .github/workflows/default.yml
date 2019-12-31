@@ -22,6 +22,7 @@ jobs:
         run: ./gradlew clean testInDocker
       - name: Archive code coverage results
         uses: actions/upload-artifact@v1
+        if: always()
         with:
           name: test-report
           path: build/reports/tests/testInDocker
