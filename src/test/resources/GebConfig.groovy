@@ -1,3 +1,4 @@
+import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.testcontainers.containers.BrowserWebDriverContainer
 import org.testcontainers.containers.GenericContainer
@@ -15,6 +16,12 @@ environments {
             container.start()
             addContainerToNetwork(container, "geb-testing-workshop")
             container.webDriver
+        }
+    }
+    headless {
+        driver = {
+            def options = new ChromeOptions(headless: true)
+            new ChromeDriver(options)
         }
     }
 }

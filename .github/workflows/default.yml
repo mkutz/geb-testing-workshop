@@ -19,7 +19,7 @@ jobs:
       - name: start containers
         run: docker-compose up -d
       - name: build
-        run: ./gradlew test testInDocker
+        run: ./gradlew testHeadless testInDocker
       - name: Archive reports
         uses: actions/upload-artifact@v1
         if: always()

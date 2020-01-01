@@ -33,5 +33,9 @@ task testInDocker(type: Test) {
     systemProperty "geb.env", "testcontainers"
 }
 
+task testHeadless(type: Test) {
+    systemProperty "geb.env", "headless"
+}
+
 description = 'Geb Testing Workshop'
 sourceCompatibility = '11'
