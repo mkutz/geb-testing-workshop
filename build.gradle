@@ -21,8 +21,10 @@ dependencies {
     compileOnly 'org.slf4j:slf4j-api:1.7.28'
 }
 
+def isCi = System.getenv('GITHUB_ACTIONS')
+
 webdriverBinaries {
-    chromedriver '79.0.3945.36'
+    chromedriver !isCi ? '79.0.3945.36' : '78.0.3904.105'
 }
 
 test {
