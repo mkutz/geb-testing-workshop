@@ -19,10 +19,10 @@ jobs:
       - name: start containers
         run: docker-compose up -d
       - name: build
-        run: ./gradlew clean testInDocker
-      - name: Archive code coverage results
+        run: ./gradlew test testInDocker
+      - name: Archive reports
         uses: actions/upload-artifact@v1
         if: always()
         with:
-          name: test-report
-          path: build/reports/tests/testInDocker/
+          name: reports
+          path: build/reports/
