@@ -24,7 +24,10 @@ dependencies {
 def isCi = System.getenv('GITHUB_ACTIONS')
 
 webdriverBinaries {
-    chromedriver !isCi ? '79.0.3945.36' : '78.0.3904.105'
+    chromedriver {
+        version = !isCi ? '79.0.3945.36' : '78.0.3904.105'
+        fallbackTo32Bit = true
+    }
 }
 
 test {
