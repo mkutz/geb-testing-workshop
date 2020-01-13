@@ -1,4 +1,4 @@
-package io.github.mkutz.gebtestingworkshop.fixtures.api
+package io.github.mkutz.gebtestingworkshop.fixture.api
 
 import io.github.mkutz.gebtestingworkshop.fixture.model.Credentials
 

@@ -1,4 +1,4 @@
-package io.github.mkutz.gebtestingworkshop.fixtures.api
+package io.github.mkutz.gebtestingworkshop.fixture.api
 
 import retrofit2.Call
 import retrofit2.http.Body
