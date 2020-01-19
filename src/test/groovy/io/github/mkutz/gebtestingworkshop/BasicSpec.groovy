@@ -4,27 +4,52 @@ import geb.spock.GebSpec
 
 class BasicSpec extends GebSpec {
 
-    def "home page is accessible"() {
+    def "go to the main page using an absolute url and verify it contains a div with class home-page"() {
         when:
-        to HomePage
+        go 'http://localhost:3000/'
 
         then:
-        at HomePage
+        waitFor { $('div.home-page') }
     }
 
-    def "register page is accessible"() {
+    def "go to registration page using an absolute url and check text of h1 element"() {
         when:
-        to RegisterPage
+        go 'http://localhost:3000/#register'
 
         then:
-        at RegisterPage
+        waitFor { $('h1').text() == 'Sign Up' }
     }
 
-    def "login page is accessible"() {
+    def "go to login page using an absolute url and check text of h1 element"() {
         when:
-        to LoginPage
+        go 'http://localhost:3000/#login'
 
         then:
-        at LoginPage
+        waitFor { $('h1').text() == 'Sign In' }
     }
+
+    def "go to the main page using a relative url and verify it contains a div with class home-page"() {
+        when:
+        go()
+
+        then:
+        waitFor { $('div.home-page') }
+    }
+
+    def "go to registration page using a relative url and check text of h1 element"() {
+        when:
+        go '#register'
+
+        then:
+        waitFor {  $('h1').text() == 'Sign Up' }
+    }
+
+    def "go to login page using a relative url and check text of h1 element"() {
+        when:
+        go '#login'
+
+        then:
+        waitFor { $('h1').text() == 'Sign In' }
+    }
+
 }

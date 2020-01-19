@@ -1,20 +1,12 @@
 package io.github.mkutz.gebtestingworkshop.fixture
 
+import static java.util.UUID.randomUUID
+
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.paranamer.ParanamerModule
-import io.github.mkutz.gebtestingworkshop.fixture.model.Article
-import io.github.mkutz.gebtestingworkshop.fixture.model.Credentials
-import io.github.mkutz.gebtestingworkshop.fixture.model.HasToken
-import io.github.mkutz.gebtestingworkshop.fixture.model.NewArticle
-import io.github.mkutz.gebtestingworkshop.fixture.model.NewUser
-import io.github.mkutz.gebtestingworkshop.fixture.model.User
-import io.github.mkutz.gebtestingworkshop.fixture.api.ArticleService
-import io.github.mkutz.gebtestingworkshop.fixture.api.CreateArticleRequest
-import io.github.mkutz.gebtestingworkshop.fixture.api.CreateUserRequest
-import io.github.mkutz.gebtestingworkshop.fixture.api.LoginRequest
-import io.github.mkutz.gebtestingworkshop.fixture.api.Token
-import io.github.mkutz.gebtestingworkshop.fixture.api.UserService
+import io.github.mkutz.gebtestingworkshop.fixture.api.*
+import io.github.mkutz.gebtestingworkshop.fixture.model.*
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -31,16 +23,40 @@ class DataFixture implements Closeable {
         .build();
 
     private final UserService userService = retrofit.create(UserService)
-
     private final ArticleService articleService = retrofit.create(ArticleService)
 
     private final List<TokenAndArticleSlug> createdArticles = []
+
+    void bootstrapArticleWrittenBy(User user) {
+        def title = randomUUID().toString()
+        def article = new NewArticle(
+            title: title,
+            description: "A description for the article titled $title",
+            body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        )
+
+        createArticle(user, article)
+    }
+
+    User getOrCreateUserWithName(String username) {
+        def user = new NewUser(
+            username: username,
+            email: "$username@gebish.org",
+            password: 'test1234'
+        )
+
+        getOrCreateUser(user)
+    }
 
     User getOrCreateUser(NewUser user) {
         login(user).orElseGet { createUser(user) }
     }
 
-    Article createArticle(HasToken tokenContainer, NewArticle article) {
+    void close() {
+        clearCreatedArticles()
+    }
+
+    private Article createArticle(HasToken tokenContainer, NewArticle article) {
         def request = new CreateArticleRequest(article)
         def token = new Token(tokenContainer)
         def response = articleService.create(token, request).execute()
@@ -50,10 +66,6 @@ class DataFixture implements Closeable {
         def created = response.body().article
         createdArticles << new TokenAndArticleSlug(token, created.slug)
         created
-    }
-
-    void close() {
-        clearCreatedArticles()
     }
 
     private User createUser(NewUser user) {
