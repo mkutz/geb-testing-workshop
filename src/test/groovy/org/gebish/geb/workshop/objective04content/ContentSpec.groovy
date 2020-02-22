@@ -3,7 +3,6 @@ package org.gebish.geb.workshop.objective04content
 import static java.util.UUID.randomUUID
 
 import geb.spock.GebSpec
-import groovy.transform.NotYetImplemented
 
 class ContentSpec extends GebSpec {
 
@@ -12,16 +11,35 @@ class ContentSpec extends GebSpec {
     String username = randomUUID().toString()[0..19]
     String email = "${username}@gebish.org".toString()
 
-    @NotYetImplemented
     def "an error appears when no username is provided upon registration"() {
-        expect:
-        false
+        when:
+        def registrationPage = to RegistrationPage
+
+        and:
+        registrationPage.email.value(email)
+        registrationPage.password.value(password)
+
+        and:
+        registrationPage.submitButton.click()
+
+        then:
+        waitFor { registrationPage.errorMessages == ['username can\'t be empty'] }
     }
 
-    @NotYetImplemented
     def "can register a new user"() {
-        expect:
-        false
+        when:
+        def registrationPage = to RegistrationPage
+
+        and:
+        registrationPage.username.value(username)
+        registrationPage.email.value(email)
+        registrationPage.password.value(password)
+
+        and:
+        registrationPage.submitButton.click()
+
+        then:
+        at HomePage
     }
 
 }

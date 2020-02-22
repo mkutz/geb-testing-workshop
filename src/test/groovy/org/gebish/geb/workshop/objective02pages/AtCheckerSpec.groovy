@@ -1,26 +1,31 @@
 package org.gebish.geb.workshop.objective02pages
 
 import geb.spock.GebSpec
-import groovy.transform.NotYetImplemented
 
 class AtCheckerSpec extends GebSpec {
 
-    @NotYetImplemented
     def "go to the home page and verify at checker"() {
-        expect:
-        false
+        when:
+        to HomePage
+
+        then:
+        at HomePage
     }
 
-    @NotYetImplemented
     def "go to the registration page and verify at checker"() {
-        expect:
-        false
+        when:
+        to RegistrationPage
+
+        then:
+        at RegistrationPage
     }
 
-    @NotYetImplemented
     def "go to the login page and verify at checker"() {
-        expect:
-        false
+        when:
+        to LoginPage
+
+        then:
+        at LoginPage
     }
 
 }

@@ -1,7 +1,6 @@
 package org.gebish.geb.workshop.objective05modules
 
 import geb.spock.GebSpec
-import groovy.transform.NotYetImplemented
 import org.gebish.geb.workshop.fixture.DataFixture
 import spock.lang.AutoCleanup
 
@@ -10,7 +9,6 @@ class ModulesSpec extends GebSpec {
     @AutoCleanup
     DataFixture data = new DataFixture()
 
-    @NotYetImplemented
     def "author usernames are displayed on article previews"() {
         given:
         def marcin = data.getOrCreateUserWithName('marcin')
@@ -21,8 +19,18 @@ class ModulesSpec extends GebSpec {
         2.times { data.bootstrapArticleWrittenBy(michael) }
         data.bootstrapArticleWrittenBy(marcin)
 
-        expect:
-        false
+        when:
+        def homePage = to HomePage
+
+        then:
+        waitFor { homePage.previews }
+
+        when:
+        def previewsByAuthorUsername = homePage.previews.groupBy { it.authorUsername }
+
+        then:
+        previewsByAuthorUsername[marcin.username].size() == 3
+        previewsByAuthorUsername[michael.username].size() == 2
     }
 
 }

@@ -1,7 +1,6 @@
 package org.gebish.geb.workshop.objective07advancedwaiting
 
 import geb.spock.GebSpec
-import groovy.transform.NotYetImplemented
 import org.gebish.geb.workshop.fixture.DataFixture
 import spock.lang.AutoCleanup
 
@@ -10,7 +9,6 @@ class AdvancedWaitingSpec extends GebSpec {
     @AutoCleanup
     DataFixture data = new DataFixture()
 
-    @NotYetImplemented
     def "author usernames are displayed on article previews"() {
         given:
         def marcin = data.getOrCreateUserWithName('marcin')
@@ -21,11 +19,15 @@ class AdvancedWaitingSpec extends GebSpec {
         2.times { data.bootstrapArticleWrittenBy(michael) }
         data.bootstrapArticleWrittenBy(marcin)
 
-        expect:
-        false
+        when:
+        def homePage = to HomePage
+        def previewsByAuthorUsername = homePage.previews.groupBy { it.authorUsername }
+
+        then:
+        previewsByAuthorUsername[marcin.username].size() == 3
+        previewsByAuthorUsername[michael.username].size() == 2
     }
 
-    @NotYetImplemented
     def "logging in"() {
         given:
         def username = 'loginspecuser'
@@ -39,8 +41,11 @@ class AdvancedWaitingSpec extends GebSpec {
             password: password
         )
 
-        expect:
-        false
+        when:
+        to(LoginPage).login(email, password)
+
+        then:
+        at HomePage
     }
 
 }
