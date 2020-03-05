@@ -19,7 +19,7 @@ dependencies {
     testImplementation 'org.testcontainers:selenium:1.12.5'
     testImplementation 'com.squareup.retrofit2:retrofit:2.7.2'
     testImplementation 'com.squareup.retrofit2:converter-jackson:2.7.1'
-    testImplementation 'com.fasterxml.jackson.module:jackson-module-paranamer:2.9.10'
+    testImplementation 'com.fasterxml.jackson.module:jackson-module-paranamer:2.10.3'
     testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.10'
     compileOnly 'org.slf4j:slf4j-api:1.7.30'
 }
